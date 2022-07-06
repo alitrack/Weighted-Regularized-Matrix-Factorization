@@ -193,11 +193,13 @@ class WRMF(Recommender):
 
     def _fit_cf(self, ):
         import tensorflow as tf
+        tf = tf.compat.v1
+        
         from .wrmf_model import Model
 
         np.random.seed(self.seed)
         os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-        tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+        tf.logging.set_verbosity(tf.logging.ERROR)
 
         R = self.train_set.csc_matrix  # csc for efficient slicing over items
         n_users, n_items, = self.train_set.num_users, self.train_set.num_items

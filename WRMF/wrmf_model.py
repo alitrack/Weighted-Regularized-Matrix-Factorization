@@ -15,6 +15,7 @@
 
 
 import tensorflow as tf
+tf = tf.compat.v1
 
 
 class Model:
